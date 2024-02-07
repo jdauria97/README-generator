@@ -59,7 +59,22 @@ function writeToFile(fileName, data) {
 }
 
 // TODO: Create a function to initialize app
-function init() {}
+function init() {
+    console.log('===================================================================')
+        console.log('The following prompts will create a README.md.\nThe title of the project will be the name of the Markdown document.');
+        console.log('===================================================================')
+        inquirer.prompt (questions)
+
+          .then((answer) => {
+            const templateREADME = generateMarkdown(answer);
+
+            const filename = `${answer.title.toUpperCase().split(' ').join('')}.md`;
+                  writeToFile(filename, templateREADME);
+      
+            console.log(answer);
+            // console.log(templateREADME);
+          })
+}
 
 // Function call to initialize app
 init();
